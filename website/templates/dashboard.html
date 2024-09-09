@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Scores App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard-stylesheet.css') }}">
+</head>
+<body class="h-screen flex flex-col">
+    <div class="status-bar">
+        <span>9:41</span>
+        <div>
+            <img src="/api/placeholder/20/20" alt="Signal Icon" class="inline-block">
+            <img src="/api/placeholder/20/20" alt="WiFi Icon" class="inline-block">
+            <img src="/api/placeholder/20/20" alt="Battery Icon" class="inline-block">
+        </div>
+    </div>
+    
+    <header class="app-header">
+        <h1 class="text-xl font-bold">Scores</h1>
+        <div>
+            <img src="/api/placeholder/24/24" alt="Search Icon" class="inline-block mr-4">
+            <img src="/api/placeholder/24/24" alt="Menu Icon" class="inline-block">
+        </div>
+    </header>
+    
+    <nav class="date-nav">
+        <button>&lt;</button>
+        <span>Sun, 28 May</span>
+        <button>&gt;</button>
+    </nav>
+    
+    <main class="flex-grow overflow-auto">
+        <div class="match-card">
+            <div class="flex justify-between items-center mb-2">
+                <span>Stamford Bridge</span>
+                <span class="text-green-500">LIVE 45'+4</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="/api/placeholder/40/40" alt="Real Madrid" class="mr-2">
+                    <span>Real Madrid</span>
+                </div>
+                <span class="text-2xl font-bold">0</span>
+            </div>
+            <div class="flex justify-between items-center mt-2">
+                <div class="flex items-center">
+                    <img src="/api/placeholder/40/40" alt="Barcelona" class="mr-2">
+                    <span>Barcelona</span>
+                </div>
+                <span class="text-2xl font-bold">1</span>
+            </div>
+        </div>
+        
+        <div class="league-header">
+            <span>League 1</span>
+            <span>Play-offs</span>
+        </div>
+        
+        <div class="match-card">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="/api/placeholder/30/30" alt="SudTirol" class="mr-2">
+                    <span>SudTirol</span>
+                </div>
+                <span class="text-xl font-bold">1</span>
+            </div>
+            <div class="flex justify-between items-center mt-2">
+                <div class="flex items-center">
+                    <img src="/api/placeholder/30/30" alt="Bari" class="mr-2">
+                    <span>Bari</span>
+                </div>
+                <span class="text-xl font-bold">1</span>
+            </div>
+        </div>
+        
+        <div class="match-card">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="/api/placeholder/30/30" alt="Barnsley" class="mr-2">
+                    <span>Barnsley</span>
+                </div>
+                <span class="text-xl font-bold">-</span>
+            </div>
+            <div class="flex justify-between items-center mt-2">
+                <div class="flex items-center">
+                    <img src="/api/placeholder/30/30" alt="Sheffield Wednesday" class="mr-2">
+                    <span>Sheffield Wednesday</span>
+                </div>
+                <span class="text-xl font-bold">-</span>
+            </div>
+        </div>
+        
+        <div class="match-card">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="/api/placeholder/30/30" alt="SudTirol" class="mr-2">
+                    <span>SudTirol</span>
+                </div>
+                <span class="text-xl font-bold">1</span>
+            </div>
+            <div class="flex justify-between items-center mt-2">
+                <div class="flex items-center">
+                    <img src="/api/placeholder/30/30" alt="Opponent" class="mr-2">
+                    <span>Opponent</span>
+                </div>
+                <span class="text-xl font-bold">-</span>
+            </div>
+        </div>
+    </main>
+    
+    <nav class="bottom-nav">
+        <div class="nav-item">
+            <img src="/api/placeholder/24/24" alt="Home" class="mx-auto">
+            <span>Home</span>
+        </div>
+        <div class="nav-item">
+            <img src="/api/placeholder/24/24" alt="Scores" class="mx-auto">
+            <span>Scores</span>
+        </div>
+        <div class="nav-item">
+            <img src="/api/placeholder/24/24" alt="Leagues" class="mx-auto">
+            <span>Leagues</span>
+        </div>
+        <div class="nav-item">
+            <img src="/api/placeholder/24/24" alt="Favorites" class="mx-auto">
+            <span>Favorites</span>
+        </div>
+        <div class="nav-item">
+            <img src="/api/placeholder/24/24" alt="More" class="mx-auto">
+            <span>More</span>
+        </div>
+    </nav>
+</body>
+</html>
