@@ -104,6 +104,28 @@
             color: white;
             font-size: 1.5em;
         }
+
+        .leaderboard {
+            margin-top: 30px;
+            background-color: #222;
+            padding: 15px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .leaderboard table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .leaderboard th, .leaderboard td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .leaderboard th {
+            background-color: #444;
+        }
     </style>
 </head>
 <body>
@@ -129,6 +151,21 @@
             <button id="place-bet">Place Bet</button>
             <button id="cash-out" disabled>Cash Out</button>
         </div>
+
+        <div class="leaderboard">
+            <h2>Leaderboard</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Multiplier</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <!-- Leaderboard entries will be injected here -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
@@ -142,7 +179,8 @@
         let planeElement = document.getElementById('plane');
         let multiplierElement = document.getElementById('multiplier');
         let cashOutButton = document.getElementById('cash-out');
-        
+        let leaderboardBody = document.getElementById('leaderboard-body');
+
         document.getElementById('place-bet').addEventListener('click', placeBet);
         document.getElementById('cash-out').addEventListener('click', cashOut);
 
@@ -151,7 +189,7 @@
             multiplier = data.multiplier;
             planePosition = data.planePosition;
             multiplierElement.textContent = multiplier.toFixed(2) + 'x';
-            planeElement.style.transform = `translateY(${-planePosition}px)`;
+            planeElement.style.transform = `translateY(${-planePosition}px`;
         });
 
         // Handle game crash
@@ -166,11 +204,21 @@
             multiplier = data.multiplier;
             planePosition = data.planePosition;
             multiplierElement.textContent = multiplier.toFixed(2) + 'x';
-            planeElement.style.transform = `translateY(${-planePosition}px)`;
+            planeElement.style.transform = `translateY(${-planePosition}px`;
             if (data.game_active) {
                 gameRunning = true;
                 cashOutButton.disabled = false;
             }
+        });
+
+        // Update leaderboard
+        socket.on('update_leaderboard', (leaderboard) => {
+            leaderboardBody.innerHTML = ''; // Clear existing entries
+            leaderboard.forEach(entry => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${entry.username}</td><td>${entry.multiplier.toFixed(2)}x</td>`;
+                leaderboardBody.appendChild(row);
+            });
         });
 
         function placeBet() {
